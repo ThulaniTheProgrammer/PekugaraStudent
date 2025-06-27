@@ -76,7 +76,7 @@ const HouseDetail = () => {
             )}
           />
         ) : (
-          <Image source={{ uri: house.Image }} style={tw`w-full h-96 rounded-xl`} />
+          <Image source={{ uri: house.Image }} style={tw`w-full h-96 rounded`} />
         )}
 
         {/* Carousel Pagination */}
@@ -91,12 +91,13 @@ const HouseDetail = () => {
             />
           ))}
         </View>
-
-        <View style={tw`px-4 bg-gray-100 pt-4 rounded-xl mt-[-20px] pb-10`}>
-          <Text style={tw`text-black font-bold text-4xl`}>{house.name} </Text>
+        <View style={tw`px-4 bg-orange-50 pt-4 rounded-xl mt-[-20px] pb-10`}>
+          <Text style={tw`text-black font- text-2xl`}>{house.name} </Text>
 
           <Text style={tw`text-black font-light text-xl`}>{house.price}/month</Text>
           <Text style={tw`text-gray-600 text-sm`}>{house.distance} to Campus</Text>
+        </View>
+        <View style={tw`px-4 bg-white pt-1 rounded-xl mt-[-20px] pb-10`}>
         
 
           <Text style={tw`text-xl my-3 font-sans`}>Available House Facilities</Text>

@@ -3,6 +3,7 @@ import { Text, View, Image, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import tw from 'twrnc';
+import { auth } from './Components/firebaseConfig';
 
 
 type RootStackParamList = {
@@ -16,8 +17,7 @@ const Welcome: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   
   useEffect(() => {
-    const isLoggedIn = false; // Replace this with actual authentication logic
-    if (isLoggedIn) {
+    if (auth.currentUser) {
       navigation.navigate('Main');
     }
   }, []);

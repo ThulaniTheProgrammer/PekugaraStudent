@@ -8,7 +8,7 @@ type RootStackParamList = {
   Welcome: undefined;
   HouseDetail: undefined;
   StudentLogIn: undefined;
-  StudentSignUp: undefined;
+  StudentSignIn: undefined;
   
 };
 
@@ -52,14 +52,14 @@ const Index: React.FC = () => {
     ).start(() => {
       // Navigate to Welcome screen after the animation completes
       navigation.navigate('Welcome');
-      navigation.navigate('StudentSignUp');
+     
      
     });
 
   }, [navigation, fadeAnim, scaleAnim]);
 
   return (
-    <SafeAreaView style={tw`flex-1 justify-center items-center`}>
+    <SafeAreaView style={tw`flex-1 h-full justify-center items-center`}>
       <Animated.Image 
         source={require('../assets/images/logo.png')}
         style={[

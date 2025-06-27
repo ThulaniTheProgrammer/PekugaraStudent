@@ -4,15 +4,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "twrnc";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useNavigation, NavigationProp } from "@react-navigation/native";
+import { useNavigation, NavigationProp, useRoute } from "@react-navigation/native";
 import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = "https://aqlztcsukugmsztrrkau.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFxbHp0Y3N1a3VnbXN6dHJya2F1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc5NzQyMTgsImV4cCI6MjA1MzU1MDIxOH0.jjefq42swAHHFCfAjE66gDniK4fyJaYOl5iDNBfzmcc";
 const supabase = createClient(supabaseUrl, supabaseKey);
-import Header from "./Components/Header";
+import MainHeader from "./Components/Header";
 
 const Mzari: React.FC = () => {
   const navigation = useNavigation<NavigationProp<any>>();
+  const route = useRoute() as { params?: { filter?: string } };
+  const filter = route.params?.filter;
   const [searchQuery, setSearchQuery] = useState("");
   const [houses, setHouses] = useState<any[]>([]);
 
@@ -28,20 +30,25 @@ const Mzari: React.FC = () => {
     fetchHouses();
   }, []);
 
-  const filteredHouses = houses.filter((house) =>
-    house.name.toLowerCase().includes(searchQuery.trim().toLowerCase()) ||
-    house.distance.includes(searchQuery.trim()) ||
-    house.price.toString().includes(searchQuery.trim())
-  );
+  const filteredHouses = houses.filter((house) => {
+    if (filter) {
+      return house.name.toLowerCase().includes(filter.toLowerCase());
+    }
+    return (
+      house.name.toLowerCase().includes(searchQuery.trim().toLowerCase()) ||
+      house.distance.includes(searchQuery.trim()) ||
+      house.price.toString().includes(searchQuery.trim())
+    );
+  });
 
   return (
     <ScrollView>
-      <SafeAreaView style={tw`py-4`}>
-        <Header title="" />
+      <SafeAreaView style={tw`py-4 px-2 bg-white`}>
+        <MainHeader title="Houses" />
         <View style={tw`mx-2 mt-4`}>
           <View style={tw`flex flex-row justify-between items-center`}>
-            <View>
-              <Text style={tw`text-black font-bold text-2xl`}>Your Accommodation</Text>
+            <View >
+              <Text style={tw`text-black font-bold text-2xl `}>Your Accommodation</Text>
               <Text style={tw`text-black font-bold text-xl`}>In Chinhoyi!</Text>
             </View>
          
@@ -78,7 +85,7 @@ const Mzari: React.FC = () => {
                   <Text style={tw`text-black font-semibold text-xl pt-1`}>
                     {house?.name || "Unknown House"}
                   </Text>
-                  <Text style={tw`text-black text-3 font-2`}>
+                  <Text style={tw`text-black text-3 font-2 mb-[-6]`}>
                     {house?.distance ? `${house.distance} to Campus` : "Distance unavailable"}
                   </Text>
                   <Text style={tw`text-black font-semibold text-3 pt-1`}>

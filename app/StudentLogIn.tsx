@@ -71,8 +71,14 @@ const StudentLogIn: React.FC = () => {
       </View>
 
       {/* Welcome Text */}
-      <Text style={tw`text-black font-bold text-2xl mt-4 text-center`}>WELCOME BACK</Text>
-      <Text style={tw`text-gray-500 text-center`}>Sign in to continue</Text>
+      <Text style={tw`text-black font-bold text-2xl mt-4 text-center`}>Log in</Text>
+    
+      <Text style={tw`text-gray-500 text-center`}>
+          Don't have an account?
+          <Text onPress={() => navigation.navigate('StudentSignUp')} style={tw`font-bold text-black`}>
+            {' '}Sign Up
+          </Text>
+        </Text>
 
       {/* Input Fields */}
       <View style={tw`mt-6`}>
@@ -121,12 +127,7 @@ const StudentLogIn: React.FC = () => {
 
       {/* Sign Up Link */}
       <View style={tw`absolute bottom-6 w-full items-center`}>
-        <Text style={tw`text-gray-500`}>
-          Don't have an account?
-          <Text onPress={() => navigation.navigate('StudentSignUp')} style={tw`font-bold text-black`}>
-            {' '}Sign Up
-          </Text>
-        </Text>
+    
       </View>
     </SafeAreaView>
   );
