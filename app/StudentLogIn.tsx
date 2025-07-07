@@ -51,7 +51,6 @@ const StudentLogIn: React.FC = () => {
       Alert.alert('Error', 'Please enter both email and password');
       return;
     }
-
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
