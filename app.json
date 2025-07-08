@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "PekugaraStudent",
-    "slug": "PekugaraStudent",
-    "version": "1.0.0",
+    "name": "Pekugara",
+    "slug": "Pekugara",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -12,6 +12,8 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 2,
+      "versionName": "1.0.1",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
