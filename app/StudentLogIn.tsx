@@ -117,13 +117,7 @@ const StudentLogIn: React.FC = () => {
       </TouchableOpacity>
 
       {/* Social Media Login */}
-      <Text style={tw`text-center text-gray-500 mt-6`}>or log in with</Text>
-      <View style={tw`flex-row justify-center space-x-6 mt-4`}>
-        <TouchableOpacity onPress={() => promptAsync()}>
-          <AntDesign name="google" size={30} color="black" />
-        </TouchableOpacity>
-      </View>
-
+     
       {/* Sign Up Link */}
       <View style={tw`absolute bottom-6 w-full items-center`}>
     
